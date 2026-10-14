@@ -109,7 +109,7 @@ p { margin: 0; }
 
 /* hero */
 .hero .wrap {
-  display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr) minmax(0, 15.5rem);
   gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; padding-block: clamp(2.5rem, 5vw, 4.5rem);
 }
 .hero-text { display: grid; gap: 1.2rem; min-width: 0; }
@@ -142,6 +142,23 @@ p { margin: 0; }
 .profile .pt { display: grid; line-height: 1.2; }
 .profile b { font-family: var(--display); font-weight: 600; font-size: 0.95rem; }
 .profile small { font-family: var(--display); font-size: 0.78rem; color: var(--muted); }
+
+
+/* hero contact column: stacked on the right on wide screens, a row under the text on smaller ones */
+.hero-links { display: grid; gap: 0.6rem; align-content: center; min-width: 0; }
+.hero-links .actions { display: grid; gap: 0.6rem; margin-top: 0; }
+.hero-links .profiles { display: grid; gap: 0.6rem; }
+.hero-links .btn { justify-content: flex-start; padding-left: 1.1rem; }
+.hero-links .profile { width: 100%; }
+@media (max-width: 1100px) {
+  .hero .wrap { grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); }
+  .hero-links { grid-column: 2; }
+  .hero-links .actions, .hero-links .profiles { display: flex; flex-wrap: wrap; }
+  .hero-links .profile { width: auto; }
+}
+@media (max-width: 760px) {
+  .hero-links { grid-column: auto; }
+}
 
 /* companies */
 .companies .wrap { padding-block: 0 clamp(3rem, 6vw, 4.5rem); display: grid; gap: 1.25rem; }
@@ -372,24 +389,26 @@ footer .wrap { padding-block: 1.6rem; display: flex; flex-wrap: wrap; justify-co
         <p class="lede">Software engineer building distributed systems, backend services, and AI infrastructure.</p>
         <p class="intro">I'm pursuing an MS in Computer Science at the University of Wisconsin–Madison. I bring over three years of software development experience from Barclays, along with internships at Microsoft, Samsung, and Citibank. My work spans distributed systems, database systems, agentic AI, full-stack and API development, backend development, and AI infrastructure.</p>
         <p class="status">I graduate in May 2027 and am looking for full-time roles in software development, AI engineering, backend engineering, and distributed systems.</p>
-        <div class="actions">
-          <a class="btn primary" href="mailto:srimathi.ravisankar18@gmail.com"><svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Email me</a>
-          <a class="btn" href="resume.pdf" target="_blank" rel="noopener"><svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Résumé</a>
-        </div>
-        <div class="profiles" aria-label="Profiles">
-          <a class="profile" href="https://www.linkedin.com/in/srimathi-ravisankar/" target="_blank" rel="noopener">
-            <span class="pl"><img src="assets/logos/linkedin.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
-            <span class="pt"><b>LinkedIn</b><small>in/srimathi-ravisankar</small></span>
-          </a>
-          <a class="profile" href="https://github.com/sri123vk" target="_blank" rel="noopener">
-            <span class="pl"><img src="assets/logos/github.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></span>
-            <span class="pt"><b>GitHub</b><small>sri123vk</small></span>
-          </a>
-          <a class="profile" href="https://leetcode.com/u/srimathivk/" target="_blank" rel="noopener">
-            <span class="pl"><img src="assets/logos/leetcode.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 4 4-4 4M12 17h7"/></svg></span>
-            <span class="pt"><b>LeetCode</b><small>srimathivk</small></span>
-          </a>
-        </div>
+      </div>
+      <div class="hero-links" aria-label="Contact and profiles">
+          <div class="actions">
+            <a class="btn primary" href="mailto:srimathi.ravisankar18@gmail.com"><svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Email me</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener"><svg class="bi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Résumé</a>
+          </div>
+          <div class="profiles" aria-label="Profiles">
+            <a class="profile" href="https://www.linkedin.com/in/srimathi-ravisankar/" target="_blank" rel="noopener">
+              <span class="pl"><img src="assets/logos/linkedin.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+              <span class="pt"><b>LinkedIn</b><small>in/srimathi-ravisankar</small></span>
+            </a>
+            <a class="profile" href="https://github.com/sri123vk" target="_blank" rel="noopener">
+              <span class="pl"><img src="assets/logos/github.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></span>
+              <span class="pt"><b>GitHub</b><small>sri123vk</small></span>
+            </a>
+            <a class="profile" href="https://leetcode.com/u/srimathivk/" target="_blank" rel="noopener">
+              <span class="pl"><img src="assets/logos/leetcode.png" alt=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 4 4-4 4M12 17h7"/></svg></span>
+              <span class="pt"><b>LeetCode</b><small>srimathivk</small></span>
+            </a>
+          </div>
       </div>
     </div>
   </section>
